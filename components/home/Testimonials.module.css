@@ -1,0 +1,112 @@
+/* src/components/home/Testimonials.module.css */
+
+.testimonials {
+  padding: 60px 0;
+  background: #f8f9fa;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 36px;
+  font-weight: 900;
+  color: #2d2926;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 16px;
+  color: #888;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.card {
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  position: relative;
+}
+
+.quoteIcon {
+  font-size: 24px;
+  color: #440099;
+  opacity: 0.3;
+  margin-bottom: 12px;
+}
+
+.comment {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  margin-bottom: 16px;
+}
+
+.stars {
+  display: flex;
+  gap: 2px;
+  margin-bottom: 16px;
+}
+
+.starFilled {
+  color: #f5a623;
+}
+
+.starEmpty {
+  color: #ddd;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.userImage {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.userImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.userInfo h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+  color: #2d2926;
+}
+
+.userInfo span {
+  font-size: 13px;
+  color: #888;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+}

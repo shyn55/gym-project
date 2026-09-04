@@ -1,0 +1,360 @@
+/* src/components/home/Hero.module.css */
+
+/* ===== بخش اصلی هیرو ===== */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+  padding: 40px 0;
+}
+
+/* ===== تصویر پس‌زمینه ===== */
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* تیرگی تصویر */
+  z-index: 1;
+}
+
+/* ===== کانتینر محتوا ===== */
+.heroContainer {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 40px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: center;
+}
+
+/* ===== سمت راست: محتوای متنی ===== */
+.heroContent {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroTitle {
+  font-size: 52px;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.titleWhite {
+  color: #ffffff;
+}
+
+.titleCyan {
+  color: #00d4ff; /* آبی فیروزه‌ای */
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.heroDescription {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 18px;
+  line-height: 1.8;
+  max-width: 480px;
+  margin: 0;
+}
+
+/* ===== سمت چپ: باکس سفید ===== */
+.heroBox {
+  background-color: rgba(250, 259, 259, 0.9);
+  border-radius: 20px;
+  padding: 46px 72px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 400px;
+  margin-left: 0; /* تغییر از auto به 0 برای چپ‌تر شدن */
+  margin-right: auto; /* اضافه شد تا به چپ بچسبد */
+  direction: rtl;
+  text-align: right;
+  position: relative;
+}
+.boxLabel {
+  color: #00bcd4;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.boxAddress {
+  font-size: 34px;
+  font-weight: 900;
+  color: #202020;
+  line-height: 1.25;
+}
+.boxDetail {
+  font-size: 17px;
+  color: #666;
+  line-height: 1.9;
+}
+.phoneList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+  margin-bottom: 8px;
+}
+
+.phoneItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: #2d2926;
+  font-weight: 700;
+  font-size: 17px;
+  transition: 0.3s;
+}
+
+.phoneItem:hover {
+  color: #440099;
+}
+
+.phoneItem svg {
+  color: #00b894;
+  font-size: 18px;
+}
+
+.boxPhone {
+  font-size: 18px;
+  color: #2d2926;
+  font-weight: 600;
+  margin: 4px 0 8px 0;
+  direction: ltr;
+  text-align: right;
+}
+
+/* ===== دکمه‌های نشان و بلد ===== */
+.boxButtons {
+  display: flex;
+  gap: 12px;
+  margin: 4px 0 8px 0;
+}
+
+.boxBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: #ffffff;
+  font-family: inherit;
+}
+
+.btnIcon {
+  font-size: 20px;
+}
+
+.btnNeshan {
+  background-color: #00b894;
+}
+
+.btnNeshan:hover {
+  background-color: #00a381;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 184, 148, 0.4);
+}
+
+.btnBalad {
+  background-color: #0984e3;
+}
+
+.btnBalad:hover {
+  background-color: #0873c7;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(9, 132, 227, 0.4);
+}
+
+/* ===== پایین باکس ===== */
+.boxFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid #eee;
+  padding-top: 18px;
+  margin-top: 10px;
+}
+
+.footerText {
+  color: #888;
+  font-size: 14px;
+}
+
+.footerLink {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #440099;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footerLink:hover {
+  color: #5c00cc;
+}
+
+.footerIcon {
+  font-size: 18px;
+}
+
+/* ======================================== */
+/* ===== پاسخگویی (Responsive) ===== */
+/* ======================================== */
+
+/* تبلت و موبایل بزرگ: کمتر از 979px */
+@media (max-width: 979px) {
+  .hero {
+    min-height: auto;
+    padding: 0;
+  }
+
+  .heroContainer {
+    grid-template-columns: 1fr;
+    gap: 0;
+    padding: 0;
+  }
+
+  /* ===== سمت راست: متن روی تصویر ===== */
+  .heroContent {
+    position: relative;
+    z-index: 2;
+    padding: 80px 24px 40px 24px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .heroDescription {
+    font-size: 16px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  /* ===== سمت چپ: باکس سفید زیر تصویر ===== */
+  .heroBox {
+    margin: -20px 16px 40px 16px;
+    max-width: 100%;
+    padding: 28px 24px;
+    border-radius: 16px;
+    position: relative;
+    z-index: 3;
+  }
+
+  .boxAddress {
+    font-size: 26px;
+  }
+
+  .boxDetail {
+    font-size: 16px;
+  }
+
+  .boxPhone {
+    font-size: 16px;
+  }
+
+  .boxButtons {
+    flex-direction: row;
+  }
+
+  .boxBtn {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+
+  .boxFooter {
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-start;
+  }
+}
+
+/* موبایل کوچک: کمتر از 480px */
+@media (max-width: 480px) {
+  .heroTitle {
+    font-size: 26px;
+  }
+
+  .heroDescription {
+    font-size: 14px;
+  }
+
+  .heroBox {
+    padding: 20px 16px;
+    margin: -10px 12px 30px 12px;
+  }
+
+  .boxAddress {
+    font-size: 22px;
+  }
+
+  .boxDetail {
+    font-size: 14px;
+  }
+
+  .boxPhone {
+    font-size: 14px;
+  }
+
+  .boxButtons {
+    flex-direction: column;
+  }
+
+  .boxBtn {
+    padding: 12px;
+    font-size: 15px;
+  }
+
+  .boxFooter {
+    flex-direction: column;
+    gap: 6px;
+    align-items: flex-start;
+  }
+
+  .footerText {
+    font-size: 13px;
+  }
+
+  .footerLink {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,291 @@
+/* src/components/layout/Footer.module.css */
+
+/* ===== بخش اصلی فوتر ===== */
+.footer {
+  background: #1a1a2e;
+  color: rgba(255, 255, 255, 0.8);
+  padding: 60px 0 0 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== گرید ۴ ستونه ===== */
+.footer .container {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
+  gap: 40px;
+  padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ===== ستون‌ها ===== */
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ===== لوگو ===== */
+.logoWrapper {
+  margin-bottom: 4px;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+/* ===== متن درباره ===== */
+.aboutText {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+}
+
+/* ===== شبکه‌های اجتماعی ===== */
+.socialLinks {
+  display: flex;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.socialLink:hover {
+  background: #440099;
+  transform: translateY(-3px);
+  box-shadow: 0 4px 20px rgba(68, 0, 153, 0.4);
+}
+
+/* ===== عناوین ستون‌ها ===== */
+.columnTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 4px 0;
+  position: relative;
+}
+
+.columnTitle::after {
+  content: "";
+  display: block;
+  width: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, #440099, #00d4ff);
+  margin-top: 8px;
+  border-radius: 2px;
+}
+
+/* ===== لیست لینک‌ها ===== */
+.linksList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.linksList li {
+  margin: 0;
+}
+
+.linksList a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.linksList a:hover {
+  color: #00d4ff;
+  transform: translateX(-4px);
+}
+
+/* ===== اطلاعات تماس ===== */
+.contactList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.contactList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.contactIcon {
+  flex-shrink: 0;
+  color: #00d4ff;
+  font-size: 16px;
+  margin-top: 3px;
+}
+
+/* ===== ساعت کاری ===== */
+.hoursList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.hoursList li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.hoursIcon {
+  flex-shrink: 0;
+  color: #00d4ff;
+  font-size: 16px;
+}
+
+.hoursList li div {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.day {
+  font-weight: 500;
+}
+
+.time {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* ===== پایین فوتر ===== */
+.bottomBar {
+  background: rgba(0, 0, 0, 0.3);
+  padding: 16px 0;
+}
+
+.bottomBar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+  gap: 16px;
+}
+
+.copyRight {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.6);
+  margin: 0;
+}
+
+.developer {
+  color: #00d4ff;
+  font-weight: 600;
+}
+
+.bottomLinks {
+  display: flex;
+  gap: 20px;
+}
+
+.bottomLinks a {
+  color: rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+}
+
+.bottomLinks a:hover {
+  color: #00d4ff;
+}
+
+/* ======================================== */
+/* ===== پاسخگویی ===== */
+/* ======================================== */
+
+/* تبلت: 2 ستون */
+@media (max-width: 1024px) {
+  .footer .container {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+/* موبایل: 1 ستون */
+@media (max-width: 639px) {
+  .footer {
+    padding: 40px 0 0 0;
+  }
+
+  .footer .container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+    padding-bottom: 28px;
+  }
+
+  .column {
+    text-align: center;
+    align-items: center;
+  }
+
+  .columnTitle::after {
+    margin: 8px auto 0;
+  }
+
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .contactList li {
+    justify-content: center;
+  }
+
+  .hoursList li div {
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .bottomBar .container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .bottomLinks {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .copyRight {
+    font-size: 13px;
+  }
+}

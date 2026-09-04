@@ -1,0 +1,157 @@
+/* app/payment/simulate/payment.module.css */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #1a1a2e, #2d1b4e);
+  padding: 20px;
+}
+
+.container {
+  max-width: 440px;
+  width: 100%;
+}
+
+.card {
+  background: #fff;
+  padding: 40px 32px;
+  border-radius: 24px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #2d2926;
+  margin: 0 0 8px 0;
+}
+
+.subtitle {
+  color: #888;
+  margin: 0 0 24px 0;
+}
+
+.priceBox {
+  background: #f8f9fa;
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.priceBox span {
+  display: block;
+  font-size: 14px;
+  color: #888;
+}
+
+.priceBox strong {
+  display: block;
+  font-size: 28px;
+  font-weight: 900;
+  color: #2d2926;
+  margin-top: 4px;
+}
+
+.details {
+  text-align: right;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 24px;
+}
+
+.details p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.payBtn {
+  width: 100%;
+  padding: 14px;
+  background: #440099;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 12px;
+}
+
+.payBtn:hover {
+  background: #5500bb;
+  transform: translateY(-2px);
+}
+
+.payBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  width: 100%;
+  padding: 12px;
+  background: transparent;
+  color: #888;
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+  border-color: #440099;
+  color: #440099;
+}
+
+.successBox {
+  padding: 20px;
+  background: #d4edda;
+  border-radius: 12px;
+  color: #155724;
+  margin-bottom: 16px;
+}
+
+.successBox p {
+  margin: 4px 0;
+}
+
+.note {
+  margin-top: 16px;
+  color: #aaa;
+  font-size: 12px;
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: 28px 20px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+}
+/* اضافه کنید */
+.errorBox {
+  background: #ffe0e0;
+  color: #dc3545;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.cancelBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

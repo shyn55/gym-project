@@ -1,0 +1,343 @@
+/* src/components/home/Pricing.module.css */
+
+/* ===== بخش اصلی ===== */
+.pricing {
+  padding: 80px 0 100px 0;
+  background: linear-gradient(180deg, #f8f9fa 0%, #ffffff 100%);
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== هدر بخش ===== */
+.header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.title {
+  font-size: 40px;
+  font-weight: 900;
+  color: #2d2926;
+  margin-bottom: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(90deg, #440099, #00d4ff);
+  border-radius: 2px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #666;
+  max-width: 700px;
+  margin: 24px auto 0 auto;
+  line-height: 1.8;
+}
+
+/* ===== گرید کارت‌ها ===== */
+.pricingGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 20px;
+}
+
+/* ===== کارت اصلی ===== */
+.pricingCard {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 32px 24px 28px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  transition: all 0.4s ease;
+  position: relative;
+  border: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%; /* اضافه شد */
+}
+
+.pricingCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== نشان ویژه ===== */
+.badge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #440099, #6a00cc);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 16px;
+  border-radius: 20px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* ===== آیکون ===== */
+.cardIconWrapper {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(
+    135deg,
+    rgba(68, 0, 153, 0.08),
+    rgba(0, 212, 255, 0.08)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.cardIcon {
+  font-size: 26px;
+  color: #440099;
+}
+
+/* ===== تصویر ۱:۱ ===== */
+.cardImageWrapper {
+  position: relative; /* مهم! برای استفاده از fill */
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 16px;
+  border: 3px solid #f0f0f0;
+  transition: all 0.4s ease;
+  flex-shrink: 0;
+}
+
+
+.pricingCard:hover .cardImageWrapper {
+  border-color: #440099;
+  transform: scale(1.05);
+}
+
+.cardImage {
+  object-fit: cover;
+}
+
+/* ===== عنوان و زیرعنوان ===== */
+.cardTitle {
+  font-size: 22px;
+  font-weight: 800;
+  color: #2d2926;
+  margin: 0 0 4px 0;
+}
+
+.cardSubtitle {
+  font-size: 14px;
+  color: #888;
+  margin: 0 0 16px 0;
+}
+
+/* ===== ویژگی‌ها ===== */
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 20px 0;
+  width: 100%;
+  flex: 1; /* اضافه شد - باعث می‌شود این بخش فضای خالی را پر کند */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* وسط‌چین کردن آیتم‌ها */
+  min-height: 80px; /* ارتفاع حداقل برای هم‌ترازی */
+}
+
+.featureItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 0;
+  color: #555;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.featureIcon {
+  color: #00d4ff;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+/* ===== قیمت ===== */
+.priceWrapper {
+  margin: 0 0 20px 0;
+  margin-top: auto; /* اضافه شد - قیمت رو به پایین می‌چسبونه */
+}
+
+.price {
+  font-size: 32px;
+  font-weight: 900;
+  color: #2d2926;
+}
+
+.period {
+  font-size: 14px;
+  color: #888;
+  font-weight: 500;
+}
+
+/* ===== دکمه ثبت نام ===== */
+.registerBtn {
+  width: 100%;
+  padding: 14px 0;
+  border: none;
+  border-radius: 12px;
+  background: #f0f0f0;
+  color: #555;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: auto; /* اضافه شد - دکمه رو به پایین می‌چسبونه */
+}
+
+.registerBtn:hover {
+  background: #440099;
+  color: #ffffff;
+  transform: scale(1.02);
+  box-shadow: 0 4px 20px rgba(68, 0, 153, 0.3);
+}
+
+/* ===== کارت محبوب (برنز) ===== */
+.popular {
+  border: 2px solid #cd7f32;
+  box-shadow: 0 8px 30px rgba(205, 127, 50, 0.15);
+}
+
+.popular .badge {
+  background: linear-gradient(135deg, #cd7f32, #e8a855);
+}
+
+.popularBtn {
+  background: linear-gradient(135deg, #cd7f32, #e8a855);
+  color: #fff;
+}
+
+.popularBtn:hover {
+  background: linear-gradient(135deg, #b86d2a, #d4913e);
+  color: #fff;
+}
+
+/* ===== کارت لوکس (طلایی) ===== */
+.luxury {
+  border: 2px solid #ffd700;
+  box-shadow: 0 8px 30px rgba(255, 215, 0, 0.15);
+  background: linear-gradient(180deg, #ffffff, #fffdf0);
+}
+
+.luxury .badge {
+  background: linear-gradient(135deg, #ffd700, #f5a623);
+  color: #2d2926;
+}
+
+.luxuryBtn {
+  background: linear-gradient(135deg, #ffd700, #f5a623);
+  color: #2d2926;
+}
+
+.luxuryBtn:hover {
+  background: linear-gradient(135deg, #f5c400, #e8961e);
+  color: #2d2926;
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.4);
+}
+
+.luxury .cardIcon {
+  color: #f5a623;
+}
+
+.luxury .cardIconWrapper {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 215, 0, 0.1),
+    rgba(245, 166, 35, 0.1)
+  );
+}
+
+.luxury .featureIcon {
+  color: #f5a623;
+}
+
+/* ======================================== */
+/* ===== پاسخگویی ===== */
+/* ======================================== */
+
+/* تبلت: 2 کارت در هر سطر */
+@media (max-width: 1024px) {
+  .pricingGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+/* موبایل: 1 کارت در هر سطر */
+@media (max-width: 639px) {
+  .pricing {
+    padding: 50px 0 60px 0;
+  }
+
+  .pricingGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+
+  .title {
+    font-size: 28px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    padding: 0 12px;
+  }
+
+  .pricingCard {
+    padding: 28px 20px 24px;
+  }
+
+  .price {
+    font-size: 28px;
+  }
+
+  .cardImageWrapper {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+/* ===== دسکتاپ بزرگ ===== */
+@media (min-width: 1280px) {
+  .pricingGrid {
+    gap: 28px;
+  }
+
+  .pricingCard {
+    padding: 40px 28px 32px;
+  }
+
+  .price {
+    font-size: 36px;
+  }
+}

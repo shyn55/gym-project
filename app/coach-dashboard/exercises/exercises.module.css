@@ -1,0 +1,608 @@
+/* app/coach-dashboard/exercises/exercises.module.css */
+
+.page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 24px 0 60px 0;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== هدر ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #2d2926;
+  margin: 0;
+}
+
+.addBtn,
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #440099;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.addBtn:hover,
+.backBtn:hover {
+  background: #5500bb;
+  transform: translateY(-2px);
+}
+
+.backBtn {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.backBtn:hover {
+  background: #e0e0e0;
+}
+
+/* ===== ابزارها ===== */
+.toolbar {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.searchBox {
+  flex: 1;
+  position: relative;
+  min-width: 200px;
+}
+
+.searchIcon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 10px 44px 10px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.searchInput:focus {
+  border-color: #440099;
+}
+
+.filterBox {
+  position: relative;
+  min-width: 150px;
+}
+
+.filterIcon {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #aaa;
+}
+
+.filterSelect {
+  width: 100%;
+  padding: 10px 44px 10px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  appearance: none;
+  background: #fff;
+  cursor: pointer;
+}
+
+.filterSelect:focus {
+  border-color: #440099;
+}
+
+/* ===== گرید حرکات ===== */
+.exercisesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.exerciseCard {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  transition: all 0.3s ease;
+}
+
+.exerciseCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+.cardImage {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  background: #f0f0f0;
+}
+
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: #440099;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.cardBody {
+  padding: 16px 20px;
+}
+
+.cardBody h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2926;
+  margin: 0 0 4px 0;
+}
+
+.difficulty {
+  font-size: 13px;
+  color: #888;
+  margin: 0 0 8px 0;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  margin: 8px 0;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.videoLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #dc3545;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  margin: 8px 0;
+}
+
+.videoLink:hover {
+  text-decoration: underline;
+}
+
+.cardActions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.editBtn,
+.deleteBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 0;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.editBtn {
+  background: #f0f0f0;
+  color: #555;
+}
+
+.editBtn:hover {
+  background: #e0e0e0;
+}
+
+.deleteBtn {
+  background: #ffe0e0;
+  color: #dc3545;
+}
+
+.deleteBtn:hover {
+  background: #fcc;
+}
+
+/* ===== فرم ===== */
+.form {
+  background: #fff;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  max-width: 700px;
+}
+
+.formSection {
+  margin-bottom: 20px;
+}
+
+.formSection label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.formSection input,
+.formSection select,
+.formSection textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.formSection input:focus,
+.formSection select:focus,
+.formSection textarea:focus {
+  border-color: #440099;
+}
+
+.formSection textarea {
+  resize: vertical;
+}
+
+.required {
+  color: #dc3545;
+}
+
+/* ===== آپلود تصویر ===== */
+.imageUploadWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.imagePreview {
+  width: 120px;
+  height: 120px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #f0f0f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px dashed #ddd;
+}
+
+.imagePreview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.uploadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #f0f0f0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #555;
+  transition: all 0.3s ease;
+}
+
+.uploadBtn:hover {
+  background: #e0e0e0;
+}
+
+/* ===== تگ‌ها ===== */
+.tagInput {
+  display: flex;
+  gap: 8px;
+}
+
+.tagInput input {
+  flex: 1;
+}
+
+.tagInput button {
+  padding: 10px 20px;
+  background: #440099;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f0e6ff;
+  color: #440099;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.removeTag {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #440099;
+  font-size: 14px;
+  padding: 0 4px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  accent-color: #440099;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: #440099;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.submitBtn:hover {
+  background: #5500bb;
+  transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ===== وضعیت‌های خالی ===== */
+.emptyState {
+  text-align: center;
+  padding: 60px 0;
+  color: #888;
+}
+
+.emptyIcon {
+  font-size: 48px;
+  opacity: 0.3;
+  margin-bottom: 12px;
+}
+
+.emptyAddBtn {
+  display: inline-block;
+  margin-top: 16px;
+  padding: 10px 28px;
+  background: #440099;
+  color: #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ===== خطا ===== */
+.errorBox {
+  background: #ffe0e0;
+  color: #dc3545;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+/* ===== لودینگ ===== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #888;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f0f0f0;
+  border-top-color: #440099;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ======================================== */
+/* ===== ریسپانسیو ===== */
+/* ======================================== */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .addBtn {
+    justify-content: center;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+
+  .exercisesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    padding: 20px;
+  }
+
+  .imageUploadWrapper {
+    flex-direction: column;
+  }
+}
+/* ===== آپلود فیلم ===== */
+.videoUploadWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.videoUploadBtn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 32px;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+  color: #555;
+}
+
+.videoUploadBtn:hover {
+  border-color: #440099;
+  background: #f8f0ff;
+  color: #440099;
+}
+
+.videoUploadBtn span {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.videoUploadBtn small {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.videoPreview {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  max-width: 100%;
+}
+
+.videoPlayer {
+  width: 100%;
+  max-height: 350px;
+  background: #000;
+  border-radius: 12px;
+  display: block;
+}
+
+/* ===== دکمه حذف فیلم ===== */
+.removeVideoBtn {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: rgba(220, 53, 69, 0.9);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.removeVideoBtn:hover {
+  background: #dc3545;
+  transform: scale(1.05);
+}

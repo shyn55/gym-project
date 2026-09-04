@@ -1,0 +1,896 @@
+/* app/coach-dashboard/requests/[id]/request-detail.module.css */
+
+.page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 24px 0 60px 0;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ===== لودینگ ===== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  color: #888;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid #f0f0f0;
+  border-top-color: #440099;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== هدر ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.backBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #440099;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.backBtn:hover {
+  color: #5500bb;
+  transform: translateX(-4px);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 800;
+  color: #2d2926;
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.statusBadge {
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.pending {
+  background: #fff3cd;
+  color: #856404;
+}
+
+.completed {
+  background: #d4edda;
+  color: #155724;
+}
+
+/* ===== کارت اطلاعات کاربر ===== */
+.userCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  margin-bottom: 24px;
+}
+
+.userInfo {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #440099, #6a1acc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 24px;
+}
+
+.userInfo h2 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2d2926;
+  margin: 0;
+}
+
+.userInfo p {
+  font-size: 14px;
+  color: #888;
+  margin: 0;
+}
+
+.userStats {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #555;
+}
+
+.stat svg {
+  color: #440099;
+}
+
+.bmi {
+  font-weight: 600;
+  color: #2d2926;
+}
+
+.bmiCategory {
+  font-size: 12px;
+  color: #888;
+}
+
+.goal {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.goalLabel {
+  font-weight: 600;
+  color: #555;
+}
+
+.goalValue {
+  color: #440099;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 14px;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+  background: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 8px;
+}
+
+/* ===== کارت تصاویر ===== */
+.imagesCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+  margin-bottom: 24px;
+}
+
+.imagesCard h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2926;
+  margin: 0 0 16px 0;
+}
+
+.imagesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.imageBox {
+  position: relative;
+  aspect-ratio: 1/1;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 2px solid #f0f0f0;
+  background: #f8f9fa;
+}
+
+.imageBox img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.imageBox span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 4px 0;
+  text-align: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ===== کارت برنامه ===== */
+.programCard {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  border: 1px solid #f0f0f0;
+}
+
+.programHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.programHeader h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2926;
+  margin: 0;
+}
+
+.editProgramBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.editProgramBtn:hover {
+  background: #e0e0e0;
+}
+
+.editModeBadge {
+  font-size: 13px;
+  color: #440099;
+  font-weight: 600;
+  background: #f0e6ff;
+  padding: 4px 12px;
+  border-radius: 12px;
+}
+
+/* ===== حالت نمایش برنامه ===== */
+.viewProgram {
+  padding: 8px 0;
+}
+
+.programTitle h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2926;
+  margin: 0 0 8px 0;
+}
+
+.programNotes {
+  font-size: 14px;
+  color: #666;
+  background: #f8f9fa;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.viewDay {
+  margin-bottom: 20px;
+}
+
+.viewDay h5 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #440099;
+  margin: 0 0 8px 0;
+}
+
+.viewTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.viewTable thead th {
+  background: #f0f0f0;
+  padding: 8px 10px;
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #ddd;
+}
+
+.viewTable tbody td {
+  padding: 8px 10px;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.viewTable tbody tr:hover {
+  background: #f8f9fa;
+}
+
+.programActions {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f0f0f0;
+}
+
+.pdfBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 24px;
+  background: #dc3545;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.pdfBtn:hover {
+  background: #c82333;
+}
+
+/* ===== فرم برنامه ===== */
+.programForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.field input,
+.field textarea {
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #440099;
+}
+
+.field textarea {
+  resize: vertical;
+}
+
+/* ===== روزها ===== */
+.daySection {
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 16px;
+  border: 1px solid #e0e0e0;
+}
+
+.dayHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.dayTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #2d2926;
+  background: transparent;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.3s ease;
+  flex: 1;
+  max-width: 200px;
+}
+
+.dayTitle:focus {
+  border-color: #440099;
+}
+
+.removeDayBtn {
+  background: #ffe0e0;
+  color: #dc3545;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.removeDayBtn:hover {
+  background: #fcc;
+}
+
+.removeDayBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ===== جدول تمرینات ===== */
+.exercises {
+  overflow-x: auto;
+}
+
+.exerciseTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.exerciseTable thead th {
+  background: #f0f0f0;
+  padding: 8px 6px;
+  text-align: center;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #ddd;
+}
+
+.exerciseTable tbody td {
+  padding: 4px 4px;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.exerciseTable tbody tr:nth-child(even) {
+  background: #fcfcfc;
+}
+
+.exerciseTable input {
+  width: 100%;
+  padding: 6px 4px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+  text-align: center;
+  outline: none;
+  transition: border 0.3s ease;
+  min-width: 50px;
+}
+
+.exerciseTable input:focus {
+  border-color: #440099;
+}
+
+.removeExBtn {
+  background: transparent;
+  color: #dc3545;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: all 0.3s ease;
+}
+
+.removeExBtn:hover {
+  color: #c82333;
+}
+
+.removeExBtn:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* ===== دکمه‌ها ===== */
+.addExBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  background: #e8e8e8;
+  color: #555;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 8px;
+}
+
+.addExBtn:hover {
+  background: #d5d5d5;
+}
+
+.addDayBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 0;
+  background: #f0f0f0;
+  color: #555;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.addDayBtn:hover {
+  border-color: #440099;
+  color: #440099;
+  background: #f8f0ff;
+}
+
+.formActions {
+  display: flex;
+  gap: 12px;
+}
+
+.saveBtn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 0;
+  background: #440099;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.saveBtn:hover {
+  background: #5500bb;
+  transform: translateY(-2px);
+}
+
+.saveBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.cancelBtn {
+  padding: 14px 24px;
+  background: #f0f0f0;
+  color: #555;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancelBtn:hover {
+  background: #e0e0e0;
+}
+
+/* ===== خطا و موفقیت ===== */
+.errorBox {
+  background: #ffe0e0;
+  color: #dc3545;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+.successBox {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+
+/* ======================================== */
+/* ===== ریسپانسیو ===== */
+/* ======================================== */
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .userStats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .imagesGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .dayHeader {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .dayTitle {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .exerciseTable {
+    font-size: 12px;
+  }
+
+  .exerciseTable input {
+    font-size: 12px;
+    min-width: 40px;
+    padding: 4px 2px;
+  }
+
+  .exerciseTable thead th {
+    padding: 4px 2px;
+    font-size: 12px;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .programHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .userInfo {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .userStats {
+    grid-template-columns: 1fr;
+  }
+
+  .imagesGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .programCard {
+    padding: 16px;
+  }
+
+  .daySection {
+    padding: 12px;
+  }
+}
+/* ===== انتخاب نوع برنامه ===== */
+.programTypeSelector {
+  margin-bottom: 20px;
+}
+
+.programTypeSelector label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.typeOptions {
+  display: flex;
+  gap: 12px;
+}
+
+.typeBtn {
+  flex: 1;
+  padding: 12px 0;
+  border: 2px solid #e0e0e0;
+  border-radius: 12px;
+  background: #fff;
+  font-size: 15px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.typeBtn:hover {
+  border-color: #440099;
+  color: #440099;
+}
+
+.typeBtn.active {
+  border-color: #440099;
+  background: #f0e6ff;
+  color: #440099;
+}
+
+/* ===== بخش آپلود ===== */
+.uploadSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.uploadBox label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.dropZone {
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.dropZone:hover {
+  border-color: #440099;
+  background: #f8f0ff;
+}
+
+.dropContent span {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.dropContent p {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+}
+
+.dropContent small {
+  font-size: 13px;
+  color: #aaa;
+  display: block;
+  margin-top: 4px;
+}
+
+.fileInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 16px;
+  color: #440099;
+}
+
+.fileInfo span:first-child {
+  font-weight: 600;
+}
+
+.fileSize {
+  font-size: 13px;
+  color: #888;
+}
+
+.removeFileBtn {
+  margin-top: 8px;
+  padding: 6px 16px;
+  background: #ffe0e0;
+  color: #dc3545;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.removeFileBtn:hover {
+  background: #fcc;
+}
+
+/* ===== نمایش فایل در حالت مشاهده ===== */
+.viewProgram .pdfView {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+.viewProgram .pdfView a {
+  color: #440099;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.viewProgram .pdfView a:hover {
+  text-decoration: underline;
+}

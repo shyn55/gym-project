@@ -1,0 +1,204 @@
+/* app/training-request/training-request.module.css */
+
+.page {
+  min-height: 100vh;
+  background: #f8f9fa;
+  padding: 40px 0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 900;
+  color: #2d2926;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  text-align: center;
+  color: #888;
+  margin-bottom: 32px;
+}
+
+.errorBox {
+  background: #ffe0e0;
+  color: #dc3545;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.successBox {
+  background: #d4edda;
+  color: #155724;
+  padding: 12px 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.form {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.section {
+  margin-bottom: 28px;
+}
+
+.section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2d2926;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.field input,
+.field select {
+  padding: 10px 14px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.field input:focus,
+.field select:focus {
+  border-color: #440099;
+}
+
+.hint {
+  font-size: 14px;
+  color: #888;
+  margin-bottom: 12px;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.imageUpload {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.imageUpload label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.uploadBox {
+  width: 100%;
+  aspect-ratio: 1/1;
+  border: 2px dashed #ddd;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: #fafafa;
+}
+
+.uploadBox:hover {
+  border-color: #440099;
+  background: #f0f0f0;
+}
+
+.placeholder {
+  font-size: 40px;
+  color: #ccc;
+}
+
+.textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 15px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  transition: border 0.3s ease;
+}
+
+.textarea:focus {
+  border-color: #440099;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 14px;
+  background: #440099;
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn:hover {
+  background: #5500bb;
+  transform: translateY(-2px);
+}
+
+.submitBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .row {
+    grid-template-columns: 1fr;
+  }
+
+  .imageGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .form {
+    padding: 20px;
+  }
+
+  .title {
+    font-size: 26px;
+  }
+}

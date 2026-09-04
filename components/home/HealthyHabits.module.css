@@ -1,0 +1,183 @@
+/* src/components/home/HealthyHabits.module.css */
+
+/* ===== بخش اصلی ===== */
+.healthyHabits {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* اضافه شد - وسط‌چین کردن محتوا */
+  background: linear-gradient(135deg, #2d1b4e 0%, #440099 50%, #5c00cc 100%);
+  overflow: hidden;
+}
+
+/* ===== کانتینر ===== */
+.container {
+  position: relative;
+  z-index: 2;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+
+/* ===== محتوا ===== */
+.content {
+  max-width: 700px; /* افزایش عرض برای مرکزیت بهتر */
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 auto; /* اضافه شد - وسط‌چین */
+  text-align: center; /* اضافه شد - متن وسط */
+  align-items: center; /* اضافه شد - آیتم‌ها وسط */
+}
+
+.title {
+  font-size: 44px;
+  font-weight: 900;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+  text-align: center; /* اضافه شد */
+}
+
+.highlight {
+  color: #00d4ff;
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.description {
+  font-size: 18px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+  margin: 0;
+  max-width: 580px; /* افزایش عرض */
+  text-align: center; /* اضافه شد */
+}
+
+/* ===== دکمه پیدا کردن باشگاه ===== */
+.findBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  color: #440099;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 36px;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: fit-content;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  margin: 0 auto; /* اضافه شد - دکمه وسط */
+}
+
+.findBtn:hover {
+  background: #f0f0f0;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+.btnIcon {
+  font-size: 18px;
+  transition: transform 0.3s ease;
+}
+
+.findBtn:hover .btnIcon {
+  transform: translateX(-4px);
+}
+
+/* ======================================== */
+/* ===== موبایل ===== */
+/* ======================================== */
+
+@media (max-width: 979px) {
+  .healthyHabits {
+    min-height: 400px;
+  }
+
+  .container {
+    padding: 60px 20px;
+  }
+
+  .content {
+    max-width: 100%;
+    text-align: center;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 30px;
+    text-align: center;
+  }
+
+  .highlight {
+    font-size: 30px;
+  }
+
+  .description {
+    font-size: 16px;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .findBtn {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
+}
+
+/* ===== موبایل کوچک ===== */
+@media (max-width: 480px) {
+  .container {
+    padding: 40px 16px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .highlight {
+    font-size: 24px;
+  }
+
+  .description {
+    font-size: 14px;
+  }
+
+  .findBtn {
+    padding: 12px 24px;
+    font-size: 14px;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .btnIcon {
+    font-size: 16px;
+  }
+}
+
+/* ===== دسکتاپ بزرگ ===== */
+@media (min-width: 1280px) {
+  .healthyHabits {
+    min-height: 560px;
+  }
+
+  .title {
+    font-size: 52px;
+  }
+
+  .description {
+    font-size: 20px;
+  }
+
+  .findBtn {
+    padding: 18px 44px;
+    font-size: 20px;
+  }
+}
