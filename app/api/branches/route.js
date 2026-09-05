@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Branch from "@/models/Branch";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت لیست شعبه‌ها =====
 export async function GET() {
@@ -30,7 +30,7 @@ export async function GET() {
         message: "خطا در دریافت شعبه‌ها",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -52,7 +52,7 @@ export async function POST(request) {
           success: false,
           message: "نام، آدرس و شماره تماس شعبه الزامی است",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -64,7 +64,7 @@ export async function POST(request) {
         data: newBranch,
         message: "شعبه با موفقیت اضافه شد",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     console.error("خطا در افزودن شعبه:", error);
@@ -74,7 +74,7 @@ export async function POST(request) {
         message: "خطا در افزودن شعبه",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Settings from "@/models/Settings";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت تنظیمات =====
 export async function GET() {
@@ -32,7 +32,7 @@ export async function GET() {
         message: "خطا در دریافت تنظیمات",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -56,7 +56,7 @@ export async function PUT(request) {
       settings = await Settings.findByIdAndUpdate(
         settings._id,
         { $set: body },
-        { new: true, runValidators: true }
+        { new: true, runValidators: true },
       );
     }
 
@@ -72,7 +72,7 @@ export async function PUT(request) {
         message: "خطا در ذخیره تنظیمات",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

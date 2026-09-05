@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Pricing from "@/models/Pricing";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت لیست قیمت‌ها =====
 export async function GET() {
@@ -29,7 +29,7 @@ export async function GET() {
         message: "خطا در دریافت قیمت‌ها",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -51,7 +51,7 @@ export async function POST(request) {
           success: false,
           message: "عنوان و قیمت پلن الزامی است",
         },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -63,7 +63,7 @@ export async function POST(request) {
         data: newPricing,
         message: "پلن با موفقیت اضافه شد",
       },
-      { status: 201 }
+      { status: 201 },
     );
   } catch (error) {
     return NextResponse.json(
@@ -72,7 +72,7 @@ export async function POST(request) {
         message: "خطا در افزودن پلن",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
