@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Exercise from "@/models/Exercise";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت یک حرکت =====
 export async function GET(request, { params }) {
@@ -12,7 +12,7 @@ export async function GET(request, { params }) {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -24,7 +24,7 @@ export async function GET(request, { params }) {
     if (!exercise) {
       return NextResponse.json(
         { success: false, message: "حرکت یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -40,7 +40,7 @@ export async function GET(request, { params }) {
         message: "خطا در دریافت حرکت",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -52,7 +52,7 @@ export async function PUT(request, { params }) {
     if (!session || session.user.role !== "coach") {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -68,7 +68,7 @@ export async function PUT(request, { params }) {
     if (!exercise) {
       return NextResponse.json(
         { success: false, message: "حرکت یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -85,7 +85,7 @@ export async function PUT(request, { params }) {
         message: "خطا در ویرایش حرکت",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -97,7 +97,7 @@ export async function DELETE(request, { params }) {
     if (!session || session.user.role !== "coach") {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -109,7 +109,7 @@ export async function DELETE(request, { params }) {
     if (!exercise) {
       return NextResponse.json(
         { success: false, message: "حرکت یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -125,7 +125,7 @@ export async function DELETE(request, { params }) {
         message: "خطا در حذف حرکت",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
