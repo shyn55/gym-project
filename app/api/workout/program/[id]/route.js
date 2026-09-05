@@ -4,7 +4,7 @@ import connectDB from "@/lib/mongoose";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import WorkoutRequest from "@/models/WorkoutRequest";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت یک برنامه با شناسه =====
 export async function GET(request, { params }) {

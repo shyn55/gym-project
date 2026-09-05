@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Gallery from "@/models/Gallery";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت یک تصویر =====
 export async function GET(request, { params }) {
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
     if (!image) {
       return NextResponse.json(
         { success: false, message: "تصویر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -28,7 +28,7 @@ export async function GET(request, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "خطا در دریافت تصویر" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -48,13 +48,13 @@ export async function PUT(request, { params }) {
     const updatedImage = await Gallery.findByIdAndUpdate(
       id,
       { $set: body },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
 
     if (!updatedImage) {
       return NextResponse.json(
         { success: false, message: "تصویر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -66,7 +66,7 @@ export async function PUT(request, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "خطا در ویرایش تصویر" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -87,7 +87,7 @@ export async function DELETE(request, { params }) {
     if (!deletedImage) {
       return NextResponse.json(
         { success: false, message: "تصویر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -98,7 +98,7 @@ export async function DELETE(request, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "خطا در حذف تصویر" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

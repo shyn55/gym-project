@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import WorkoutRequest from "@/models/WorkoutRequest";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import WorkoutProgram from "@/models/WorkoutProgram";
 // ===== POST: ثبت درخواست برنامه تمرینی =====
 export async function POST(request) {

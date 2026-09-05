@@ -4,7 +4,7 @@ import connectDB from "@/lib/mongoose";
 import WorkoutRequest from "@/models/WorkoutRequest";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت درخواست‌های کاربر جاری =====
 export async function GET() {

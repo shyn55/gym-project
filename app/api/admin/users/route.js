@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import User from "@/models/User";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت لیست کاربران (فقط برای ادمین) =====
 export async function GET() {
@@ -12,7 +12,7 @@ export async function GET() {
     if (!session || !session.user?.isAdmin) {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -34,7 +34,7 @@ export async function GET() {
         message: "خطا در دریافت کاربران",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -46,7 +46,7 @@ export async function POST(request) {
     if (!session || !session.user?.isAdmin) {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -58,7 +58,7 @@ export async function POST(request) {
     if (!name || !email || !password) {
       return NextResponse.json(
         { success: false, message: "نام، ایمیل و رمز عبور الزامی است" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -67,7 +67,7 @@ export async function POST(request) {
     if (existingUser) {
       return NextResponse.json(
         { success: false, message: "این ایمیل قبلاً ثبت شده است" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -100,7 +100,7 @@ export async function POST(request) {
         message: "خطا در افزودن کاربر",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

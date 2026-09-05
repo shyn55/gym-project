@@ -4,20 +4,20 @@ import connectDB from "@/lib/mongoose";
 import WorkoutRequest from "@/models/WorkoutRequest";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت یک درخواست با شناسه =====
 export async function GET(request, { params }) {
   try {
     console.log("🔍 1. شروع دریافت درخواست");
-    
+
     const session = await getServerSession(authOptions);
     console.log("🔍 2. سشن:", session?.user?.email || "خالی");
-    
+
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -40,7 +40,7 @@ export async function GET(request, { params }) {
     if (!workoutRequest) {
       return NextResponse.json(
         { success: false, message: "درخواست یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -69,13 +69,20 @@ export async function GET(request, { params }) {
     const isAdmin = session.user.isAdmin === true;
     const isCoach = session.user.role === "coach";
 
-    console.log("🔍 10. دسترسی: کاربر:", isUser, "مربی:", isCoach, "ادمین:", isAdmin);
+    console.log(
+      "🔍 10. دسترسی: کاربر:",
+      isUser,
+      "مربی:",
+      isCoach,
+      "ادمین:",
+      isAdmin,
+    );
 
     // مربی‌ها، ادمین‌ها و خود کاربر می‌توانند ببینند
     if (!isUser && !isCoach && !isAdmin) {
       return NextResponse.json(
         { success: false, message: "شما دسترسی به این درخواست را ندارید" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -92,7 +99,7 @@ export async function GET(request, { params }) {
         message: "خطا در دریافت درخواست",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -104,7 +111,7 @@ export async function PUT(request, { params }) {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -116,7 +123,7 @@ export async function PUT(request, { params }) {
     if (!workoutRequest) {
       return NextResponse.json(
         { success: false, message: "درخواست یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -126,14 +133,14 @@ export async function PUT(request, { params }) {
     if (!isCoach && !isAdmin) {
       return NextResponse.json(
         { success: false, message: "شما دسترسی به این درخواست را ندارید" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
     const updated = await WorkoutRequest.findByIdAndUpdate(
       id,
       { $set: body },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     )
       .populate("user", "name email")
       .populate("coach", "name specialty");
@@ -151,7 +158,7 @@ export async function PUT(request, { params }) {
         message: "خطا در به‌روزرسانی درخواست",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -163,7 +170,7 @@ export async function DELETE(request, { params }) {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -174,14 +181,14 @@ export async function DELETE(request, { params }) {
     if (!workoutRequest) {
       return NextResponse.json(
         { success: false, message: "درخواست یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
     if (!session.user.isAdmin) {
       return NextResponse.json(
         { success: false, message: "شما دسترسی حذف این درخواست را ندارید" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -199,7 +206,7 @@ export async function DELETE(request, { params }) {
         message: "خطا در حذف درخواست",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

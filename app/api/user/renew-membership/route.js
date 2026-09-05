@@ -3,8 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import User from "@/models/User";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-
+import { authOptions } from "@/lib/authOptions";
 
 // ===== POST: تمدید عضویت کاربر =====
 export async function POST(request) {
@@ -13,7 +12,7 @@ export async function POST(request) {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -26,7 +25,7 @@ export async function POST(request) {
     if (!user) {
       return NextResponse.json(
         { success: false, message: "کاربر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -39,7 +38,7 @@ export async function POST(request) {
     const planSettings = {
       پایه: { totalSessions: 12, price: "۱,۱۰۰,۰۰۰" },
       برنز: { totalSessions: 30, price: "۱,۵۰۰,۰۰۰" },
-      "نقره‌ای": { totalSessions: 60, price: "۸,۱۰۰,۰۰۰" },
+      نقره‌ای: { totalSessions: 60, price: "۸,۱۰۰,۰۰۰" },
       طلایی: { totalSessions: 999, price: "۸,۵۰۰,۰۰۰" },
     };
 
@@ -58,7 +57,7 @@ export async function POST(request) {
           "membership.isActive": true,
         },
       },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     ).select("-password");
 
     return NextResponse.json({
@@ -74,7 +73,7 @@ export async function POST(request) {
         message: "خطا در تمدید عضویت",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -4,7 +4,7 @@ import connectDB from "@/lib/mongoose";
 import WorkoutProgram from "@/models/WorkoutProgram";
 import WorkoutRequest from "@/models/WorkoutRequest";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import fs from "fs";
 import path from "path";
 

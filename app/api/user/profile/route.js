@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import User from "@/models/User";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت اطلاعات کاربر =====
 export async function GET() {
@@ -12,7 +12,7 @@ export async function GET() {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -24,7 +24,7 @@ export async function GET() {
     if (!user) {
       return NextResponse.json(
         { success: false, message: "کاربر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -40,7 +40,7 @@ export async function GET() {
         message: "خطا در دریافت اطلاعات کاربر",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -52,7 +52,7 @@ export async function PUT(request) {
     if (!session) {
       return NextResponse.json(
         { success: false, message: "لطفاً وارد شوید" },
-        { status: 401 }
+        { status: 401 },
       );
     }
 
@@ -60,7 +60,14 @@ export async function PUT(request) {
     const body = await request.json();
 
     // فیلدهای قابل ویرایش
-    const allowedFields = ["name", "phone", "gender", "birthDate", "weight", "height"];
+    const allowedFields = [
+      "name",
+      "phone",
+      "gender",
+      "birthDate",
+      "weight",
+      "height",
+    ];
     const updateData = {};
     allowedFields.forEach((field) => {
       if (body[field] !== undefined) {
@@ -71,13 +78,13 @@ export async function PUT(request) {
     const user = await User.findByIdAndUpdate(
       session.user.id,
       { $set: updateData },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     ).select("-password");
 
     if (!user) {
       return NextResponse.json(
         { success: false, message: "کاربر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -94,7 +101,7 @@ export async function PUT(request) {
         message: "خطا در به‌روزرسانی اطلاعات کاربر",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

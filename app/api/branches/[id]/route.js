@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Branch from "@/models/Branch";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت یک شعبه =====
 export async function GET(request, { params }) {
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
     if (!branch) {
       return NextResponse.json(
         { success: false, message: "شعبه یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -29,7 +29,7 @@ export async function GET(request, { params }) {
     console.error("خطا در دریافت شعبه:", error);
     return NextResponse.json(
       { success: false, message: "خطا در دریافت شعبه" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -49,13 +49,13 @@ export async function PUT(request, { params }) {
     const updatedBranch = await Branch.findByIdAndUpdate(
       id,
       { $set: body },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
 
     if (!updatedBranch) {
       return NextResponse.json(
         { success: false, message: "شعبه یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -68,7 +68,7 @@ export async function PUT(request, { params }) {
     console.error("خطا در ویرایش شعبه:", error);
     return NextResponse.json(
       { success: false, message: "خطا در ویرایش شعبه" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -89,7 +89,7 @@ export async function DELETE(request, { params }) {
     if (!deletedBranch) {
       return NextResponse.json(
         { success: false, message: "شعبه یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -101,7 +101,7 @@ export async function DELETE(request, { params }) {
     console.error("خطا در حذف شعبه:", error);
     return NextResponse.json(
       { success: false, message: "خطا در حذف شعبه" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

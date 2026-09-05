@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import WorkoutRequest from "@/models/WorkoutRequest";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== PUT: اختصاص مربی به درخواست =====
 export async function PUT(request, { params }) {
@@ -12,7 +12,7 @@ export async function PUT(request, { params }) {
     if (!session || session.user.role !== "coach") {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -28,13 +28,13 @@ export async function PUT(request, { params }) {
           status: "in_progress",
         },
       },
-      { new: true }
+      { new: true },
     );
 
     if (!updated) {
       return NextResponse.json(
         { success: false, message: "درخواست یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -51,7 +51,7 @@ export async function PUT(request, { params }) {
         message: "خطا در اختصاص مربی",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Article from "@/models/Article";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== GET: دریافت یک مقاله =====
 export async function GET(request, { params }) {
@@ -20,7 +20,7 @@ export async function GET(request, { params }) {
     if (!article) {
       return NextResponse.json(
         { success: false, message: "مقاله یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -28,7 +28,7 @@ export async function GET(request, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "خطا در دریافت مقاله" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -48,13 +48,13 @@ export async function PUT(request, { params }) {
     const updatedArticle = await Article.findByIdAndUpdate(
       id,
       { $set: body },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     );
 
     if (!updatedArticle) {
       return NextResponse.json(
         { success: false, message: "مقاله یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -66,7 +66,7 @@ export async function PUT(request, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "خطا در ویرایش مقاله" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -87,7 +87,7 @@ export async function DELETE(request, { params }) {
     if (!deletedArticle) {
       return NextResponse.json(
         { success: false, message: "مقاله یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -98,7 +98,7 @@ export async function DELETE(request, { params }) {
   } catch (error) {
     return NextResponse.json(
       { success: false, message: "خطا در حذف مقاله" },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import User from "@/models/User";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 
 // ===== PUT: به‌روزرسانی کاربر =====
 export async function PUT(request, { params }) {
@@ -12,7 +12,7 @@ export async function PUT(request, { params }) {
     if (!session || !session.user?.isAdmin) {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -24,20 +24,20 @@ export async function PUT(request, { params }) {
     if (id === session.user.id) {
       return NextResponse.json(
         { success: false, message: "نمی‌توانید نقش خودتان را تغییر دهید" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
     const updatedUser = await User.findByIdAndUpdate(
       id,
       { $set: body },
-      { new: true, runValidators: true }
+      { new: true, runValidators: true },
     ).select("-password");
 
     if (!updatedUser) {
       return NextResponse.json(
         { success: false, message: "کاربر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -54,7 +54,7 @@ export async function PUT(request, { params }) {
         message: "خطا در به‌روزرسانی کاربر",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }
@@ -66,7 +66,7 @@ export async function DELETE(request, { params }) {
     if (!session || !session.user?.isAdmin) {
       return NextResponse.json(
         { success: false, message: "دسترسی غیرمجاز" },
-        { status: 403 }
+        { status: 403 },
       );
     }
 
@@ -77,7 +77,7 @@ export async function DELETE(request, { params }) {
     if (id === session.user.id) {
       return NextResponse.json(
         { success: false, message: "نمی‌توانید خودتان را حذف کنید" },
-        { status: 400 }
+        { status: 400 },
       );
     }
 
@@ -86,7 +86,7 @@ export async function DELETE(request, { params }) {
     if (!deletedUser) {
       return NextResponse.json(
         { success: false, message: "کاربر یافت نشد" },
-        { status: 404 }
+        { status: 404 },
       );
     }
 
@@ -102,7 +102,7 @@ export async function DELETE(request, { params }) {
         message: "خطا در حذف کاربر",
         error: error.message,
       },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

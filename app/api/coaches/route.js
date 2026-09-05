@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoose";
 import Coach from "@/models/Coach";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
+import { authOptions } from "@/lib/authOptions";
 import bcrypt from "bcryptjs";
 // ===== GET: دریافت لیست مربیان =====
 export async function GET() {
