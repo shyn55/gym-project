@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
 import Link from "next/link";
 import { FaArrowRight, FaSave, FaPlus, FaTimes } from "react-icons/fa";
-import styles from "../../admin.module.css";
+
 
 export default function EditBranchPage() {
   const { id } = useParams();
